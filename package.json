@@ -1,0 +1,29 @@
+{
+  "name": "@arc2898/timetrack",
+  "version": "1.0.0",
+  "description": "Billable time tracker for freelancers. Track time, tag projects, export to CSV/JSON.",
+  "main": "dist/cli.js",
+  "bin": {
+    "timetrack": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "keywords": ["time", "tracker", "freelance", "billing", "cli"],
+  "license": "MIT",
+  "author": "ARC <rc002898@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arc2898/timetrack"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "chalk": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
