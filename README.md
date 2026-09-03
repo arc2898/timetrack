@@ -33,3 +33,6 @@ timetrack export -f json -o report.json
 ## License
 
 MIT
+## Development
+
+Run `npm ci`, `npm run build`, and `npm test` before publishing changes. Use a temporary project name and note when manually checking session start, stop, list, and export flows.
