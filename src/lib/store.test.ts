@@ -13,4 +13,9 @@ describe('duration formatting', () => {
   it('formats decimal hours with two digits', () => {
     expect(formatDurationHours(5_400_000)).toBe('1.50');
   });
+
+  it('formats zero duration consistently', () => {
+    expect(formatDuration(0)).toBe('0s');
+    expect(formatDurationHours(0)).toBe('0.00');
+  });
 });
