@@ -46,6 +46,9 @@ export function saveStore(store: TimeStore): void {
 
 export function startSession(project: string, tag: string, note: string): TimeSession {
   const store = loadStore();
+  if (store.activeSession) {
+    throw new Error(`An active session already exists for project: ${store.activeSession.project}`);
+  }
   const session: TimeSession = {
     id: `tt_${Date.now()}`,
     project,
