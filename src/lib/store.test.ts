@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDuration, formatDurationHours } from './store.js';
+import { assertNoActiveSession, formatDuration, formatDurationHours } from './store.js';
 
 describe('duration formatting', () => {
   it('formats sub-minute durations with seconds', () => {
@@ -17,5 +17,12 @@ describe('duration formatting', () => {
   it('formats zero duration consistently', () => {
     expect(formatDuration(0)).toBe('0s');
     expect(formatDurationHours(0)).toBe('0.00');
+  });
+
+  it('rejects starting over an active session', () => {
+    expect(() => assertNoActiveSession({
+      id: 'tt_test', project: 'existing', tag: 'work', note: '',
+      startTime: 0, endTime: null, duration: null,
+    })).toThrow('An active session already exists for project: existing');
   });
 });

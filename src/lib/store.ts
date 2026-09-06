@@ -44,11 +44,15 @@ export function saveStore(store: TimeStore): void {
   writeFileSync(STORE_FILE, JSON.stringify(store, null, 2));
 }
 
+export function assertNoActiveSession(activeSession: TimeSession | null): void {
+  if (activeSession) {
+    throw new Error(`An active session already exists for project: ${activeSession.project}`);
+  }
+}
+
 export function startSession(project: string, tag: string, note: string): TimeSession {
   const store = loadStore();
-  if (store.activeSession) {
-    throw new Error(`An active session already exists for project: ${store.activeSession.project}`);
-  }
+  assertNoActiveSession(store.activeSession);
   const session: TimeSession = {
     id: `tt_${Date.now()}`,
     project,
